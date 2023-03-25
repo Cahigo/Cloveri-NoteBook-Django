@@ -1,0 +1,31 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+  contacts
+{% endblock title %}
+
+{% block content %}
+    <h1>Контакты</h1>
+    <h2>Записей: {{ contacts|length }}</h2>
+    <hr>
+    {% if contacts %}
+        <table>
+            <tr>
+                <td>ФИО</td>
+                <td>Работа</td>
+                <td>Номер</td>
+                <td>E-mail</td>
+            </tr>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.lastname }} {{ contact.firstname|truncatechars:1 }}. {{ contact.surname|truncatechars:1 }}</td>
+                    <td>{{ contact.company }}</td>
+                    <td>{{ contact.number }}</td>
+                    <td>{{ contact.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Контактов нет</h2>
+    {% endif %}
+{% endblock content %}

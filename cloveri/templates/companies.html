@@ -1,0 +1,33 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+  companies
+{% endblock title %}
+
+{% block content %}
+    <h1>Компании</h1>
+    <h2>Записей: {{ companies|length }}</h2>
+    <hr>
+    {% if companies %}
+        <table>
+            <tr>
+                <td>Название</td>
+                <td>Адрес</td>
+                <td>Номер</td>
+                <td>E-mail</td>
+                <td>Сайт</td>
+            </tr>
+            {% for company in companies %}
+                <tr>
+                    <td>{{ company.name }}</td>
+                    <td>{{ company.address }}</td>
+                    <td>{{ company.number }}</td>
+                    <td>{{ company.email }}</td>
+                    <td>{{ company.site }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Компаний нет</h2>
+    {% endif %}
+{% endblock content %}
